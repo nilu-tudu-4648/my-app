@@ -1,25 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from 'react'
+import Appcopy from './Appcopy'
 
 function App() {
+  const first = {
+    name: "nilu",
+    phone: "55"
+  }
+  const settostorage = async () => {
+    try {
+      const set = localStorage.setItem("user", JSON.stringify(first))
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  const gettostorage = async () => {
+    try {
+      const set = JSON.parse(localStorage.getItem("user"))
+      console.log({ set })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  const deletestore = async () => {
+    try {
+      const set = localStorage.clear()
+      console.log({ set })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  useEffect(() => {
+    gettostorage()
+  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <button onClick={() => settostorage()}>click</button>
+      <button onClick={() => deletestore()}>delete</button>
+      {/* <Appcopy/> */}
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
