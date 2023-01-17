@@ -3,7 +3,7 @@ import "./App.css";
 function App() {
 
   const [state, setstate] = useState([
-    "apple", "mango"
+    "grapes", "mango"
   ])
   const [text, settext] = useState("")
   const [edit, setedit] = useState("")
