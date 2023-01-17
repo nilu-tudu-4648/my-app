@@ -1,43 +1,65 @@
-import React, { useEffect, useState } from 'react'
-import Appcopy from './Appcopy'
-
+import React, { useState } from 'react'
+import "./App.css";
 function App() {
-  const first = {
-    name: "nilu",
-    phone: "55"
-  }
-  const settostorage = async () => {
-    try {
-      const set = localStorage.setItem("user", JSON.stringify(first))
-    } catch (error) {
-      console.log(error)
-    }
-  }
-  const gettostorage = async () => {
-    try {
-      const set = JSON.parse(localStorage.getItem("user"))
-      console.log({ set })
-    } catch (error) {
-      console.log(error)
-    }
-  }
-  const deletestore = async () => {
-    try {
-      const set = localStorage.clear()
-      console.log({ set })
-    } catch (error) {
-      console.log(error)
-    }
-  }
-  useEffect(() => {
-    gettostorage()
-  }, [])
 
+  const [state, setstate] = useState([
+    "apple", "mango"
+  ])
+  const [text, settext] = useState("")
+  const [edit, setedit] = useState("")
+  const addtodo = () => {
+    setedit("")
+    settext("")
+    if (edit) {
+      const data = state.map((item, index) => item === edit ? item = text : item)
+      setstate(data)
+    } else {
+      if (text) {
+        setstate([...state, text])
+      } else {
+        alert("please enter some text")
+      }
+    }
+  }
+
+  const handleedit = (item) => {
+    settext(item)
+    setedit(item)
+  }
+  const deleteTodo = (item) => {
+    const data = state.filter((items, index) => items !== item)
+    setstate(data)
+  }
   return (
-    <div>
-      <button onClick={() => settostorage()}>click</button>
-      <button onClick={() => deletestore()}>delete</button>
-      {/* <Appcopy/> */}
+    <div className="App">
+      <div className="container">
+        <h2>TODO LIST</h2>
+        <div style={{
+          display: 'flex', padding: 18, flexDirection: 'column',
+          justifyContent: 'center', alignItems: 'center'
+        }}>
+          <div className="todoForm" >
+            <input type='text' value={text} 
+              onChange={(e) => settext(e.target.value)} placeholder='enter Todo' />
+            <button onClick={() => addtodo()}>{edit ? "edit" : "add"}</button>
+          </div>
+          <div className="allTodos">
+            {
+              state.map((item, index) => {
+                return (
+                  <li className="singleTodo">
+                    <span className="todoText">{index + 1}.{item}</span>
+                    <div>
+                      <button onClick={() => handleedit(item)}>edit</button>
+                      <button onClick={() => deleteTodo(item)}>delete</button>
+                    </div>
+                  </li>
+                )
+              })
+            }
+          </div>
+        </div>
+      </div>
     </div>
   )
 }

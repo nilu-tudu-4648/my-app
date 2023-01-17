@@ -1,84 +1,55 @@
-.main {
-  text-align: center;
-  justify-content: center;
-  display: flex; 
-  padding-top: 90px;
-  padding-bottom: 90px;
-  background-color: #e1e3eb;
-}
-.sub-main {
+.App {
+  min-height: 100vh;
   display: flex;
   justify-content: center;
-  height: 550px;
-  width: 35%;
-  box-shadow: 11px 12px 13px 12px rgb(207, 207, 207);
-  padding-top: 30px;
-  border-radius: 60px; 
-  background-color: white;
-}
-.imgs {
-    padding-top: 20px;
-    justify-content: center;
-    display: flex;
-  }
-.container-image {
-  background-color: rgb(223, 221, 221); 
-  border-radius: 150px;
   align-items: center;
+  background-color: #282c34;
+}
+
+.container {
   display: flex;
-  justify-content: center;
-  height: 115px;
-  width: 115px;
-}
-.profile {
-  height: 100px;
-  width: 100px;
-  border-radius: 130px;
-} 
-
-input{
-    width: 300px;
-    height: 50px;
-    border-radius: 60px;
-    box-shadow: inset 0px 0px 25px 0px #888;
-    border: none;
-    outline: none;
-    background-color: #fff;
+  height: 80vh;
+  border: 1px solid grey;
+  padding: 20px;
+  flex-direction: column;
+  align-items: center;
+  font-size: 20px;
+  color: white;
 }
 
-.email{
-    height: 22px;
-    width: 22px;
-    position: absolute;
-    padding: 14px 0 0 25px;
-    background-color: transparent;
+.todoForm {
+  display: flex;
+  justify-content: space-around;
+  width: 450px;
 }
 
-.name{
-    padding-left: 70px;
-    font-size: 20px;
-}
-.second-input{
-    padding-top: 20px;
-}
-
-button{
-    width: 380px;
-    height: 50px;
-    border-radius: 60px;
-    background-color: #b103fc;
-    color: white;
-    font-size: 25px;
-    border: none;
-}
-.login-button{
-    padding-top: 25px;
+input {
+  width: 80%;
+  padding: 10px;
+  border-radius: 20px;
+  border: none;
 }
 
-.link{
-    font-size: 25px;
-    font-weight: 400;
+button {
+  border: none;
+  padding: 10px;
+  border-radius: 20px;
+  margin: 0 5px;
 }
- a{
-     color: blue;
- }
+.allTodos {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.singleTodo {
+  border-radius: 50px;
+  margin: 10px 0;
+  background-color: #5dadf8;
+  padding: 10px 20px;
+  display: flex;
+  width: 450px;
+  align-items: center;
+}
+.todoText {
+  flex: 1;
+}
